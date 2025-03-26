@@ -7,7 +7,6 @@ import unittest
 src_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.insert(0, src_path)
 
-import tests # noqa: E402
 import dsl.Nodes # noqa: E402
 
 IN_GITHUB_ACTIONS = os.getenv("GITHUB_ACTIONS") == "true"
