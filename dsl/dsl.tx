@@ -1,0 +1,40 @@
+Script:
+  'script' name=ID
+  actors *= Actor
+  dialogue *= DialogueSection
+;
+
+Actor:'actor' name=ID;
+
+DialogueSection: 'dialogue' '{' lines *= SpokenLine '}';
+
+SpokenLine:  actor=[Actor] ':' (entry=STRING | entry=IfStatement);
+
+IfStatement:
+    'if' condition=BoolExpr '{' block += CodeBlock '}'
+    ('elif' condition=BoolExpr '{' block += CodeBlock '}')*
+    ('else' '{' block_else = CodeBlock '}' )?;
+
+CodeBlock: (block+=Expression |
+            block+=IfStatement) *;
+
+Expression:
+    (AssignExpression |
+    BinaryExpression |
+    BoolExpr) ';';
+
+BoolExpr: left=BinaryExpression (op=BoolBinaryOp right=BinaryExpression)*;
+AssignExpression: left=ID (op=AssignOp right=Operand)*;
+BinaryExpression: left=Term (op=PlusOrMinus right=Term)*;
+
+PlusOrMinus: '+' | '-';
+MulOrDiv:    '*' | '/' ;
+BoolBinaryOp:'=='| '!=' | '<' | '>' | '>=' | '<=';
+AssignOp:    '=' | '+=' | '-=';
+Term: left=Factor (op=MulOrDiv right=Factor)*;
+Factor: (sign=PlusOrMinus)?  op=Operand;
+Operand: op_num=NUMBER | op_id=ID | ('(' op_expr=Expression ')');
+
+Comment:
+  /\/\/.*$/
+;
