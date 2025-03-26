@@ -1,3 +1,7 @@
+[![Generic badge](https://img.shields.io/badge/textX-4.1.0-<COLOR>.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/python-3.9|3.10|3.11|3.12|3.13-blue.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/UT%20PASS-100%25-GREEN.svg)](https://shields.io/)
 # storytell_DSL
 Storytell_DSL is a Domain-Specific Language (DSL) based on TextX designed to streamline the creation of visual novels and text-based adventure games.
 This language is a proof-of-concept of usage of TextX to compose a DSL.
